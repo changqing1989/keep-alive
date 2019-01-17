@@ -6,7 +6,6 @@
       <li>
         <a
           href="#/"
-          
         >
           gotoHello
         </a>
@@ -25,6 +24,9 @@
 </template>
 
 <script>
+
+import common from '../utils/axios_'
+import axios from 'axios'
 export default {
   name: 'index',
   data () {
@@ -41,14 +43,54 @@ export default {
   },
   mounted(){
     console.log("index+++init");
+    debugger;
     this.list = [1,2,3];
+    console.log(this.$root);
+    // this.$root.list.length = 0;
+
+    // this.$parent.$refs.dddd.$destroy(true);
+    var CancelToken = axios.CancelToken;
+    var source = CancelToken.source();
+
+
+
+    common.axios_(
+        {
+            url:'/HealthCard/healthCard/getCard',
+            type:'get',
+            data:{body:'ia/nkPlnA1H3gpIPV1qKm72iC2odGL3zSBryS0exOeNJZ9eMLWG9Pqkf0pyV8HAqgDSEdVjhrN99fUo6T8u3wYYNcaQXC6y1KvpbEOtpNIj6b77MO/04uJYridvFlEqvl7qJl6fvvbBvp415iAplWw=='},
+            cancelToken:source.token
+        }
+    );
+
+
+
+    common.axios_(
+        {
+            url:'/HealthCard/healthCard/getCard',
+            type:'get',
+            data:{body:'ia/nkPlnA1H3gpIPV1qKm72iC2odGL3zSBryS0exOeNJZ9eMLWG9Pqkf0pyV8HAqgDSEdVjhrN99fUo6T8u3wYYNcaQXC6y1KvpbEOtpNIj6b77MO/04uJYridvFlEqvl7qJl6fvvbBvp415iAplWw=='},
+            cancelToken:source.token
+        }
+    );
+
+
+ setTimeout (function () {
+     // 取消请求
+     // source.cancel('Operation canceled by the user.');
+ },1000)
+
+
+
+
+
   },
   // beforeRouteLeave(to, from, next) {
   //   debugger;
   //   // 设置下一个路由的 meta
   //   to.meta.keepAlive = false;  // B 跳转到 A 时，让 A 缓存，即不刷新
   //   next();
-  //   }
+  // }
 }
 </script>
 

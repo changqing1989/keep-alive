@@ -10,7 +10,17 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+
+
+        '/HealthCard/healthCard/': {
+            
+            target:"http://alipay.96225.com:8080/HealthCard/healthCard/",
+            pathRewrite: {
+              '^/HealthCard/healthCard/': ''
+            }
+        },
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST

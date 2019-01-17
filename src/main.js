@@ -4,12 +4,16 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
+
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  // axios_:axios,
+  data:{list:["HelloWorld"]},
   components: { App },
   template: '<App/>'
 })
@@ -22,6 +26,10 @@ router.beforeEach((to, from, next) => {
 	}else if(from.path == "/test" && to.path =="/"){
 		to.meta.keepAlive = true;
 	}
+
+  // if(to.path == "/index"){
+  //   this.$root.list.length = 0;
+  // }
      // 设置下一个路由的 meta
       // B 跳转到 A 时，让 A 缓存，即不刷新
     next();
